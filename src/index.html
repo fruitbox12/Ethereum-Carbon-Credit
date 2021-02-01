@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Carbon Credit Exchange</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container" >
+      <div class="jumbotron" style="background-color:#DAF7A6;">
+        <h1>Carbon Credit Platform</h1>
+        <p style="font-family:verdana">This is a platform for trading carbon credits on an ethereum network.</p>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="#Administrator">Administrator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Trading">Trading Platform</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="Administrator" class="container-fluid">
+      <h2 class ="sh2">Administrator Functions</h2>
+
+
+        <p> </p>
+
+        <div class="FormClass" id="Initialize" >
+            <h3> <b> Initialize participant:</b> </h3>
+            <label for="fname">Name:     </label> <br>
+            <input id="Initialize_Name" type="text" id="fname" name="fname"><br>
+            <label for="fname2">Address:</label> <br>
+            <input id="Initialize_Address" type="text" id="fname2" name="fname2"><br>
+            <label for="fname3">Balance:  </label><br>
+            <input id="Initialize_Balance" type="text" id="fname3" name="fname3"><br>
+            <p></p>
+            <button id="Initialize_Submit" type="button" class="btn btn-secondary" onclick="App.initializeParticipant()">Register</button>
+        </div >
+
+        <div class="FormClass" id="Update" >
+          <h5> <b> Update participants:</b> </h5>
+          <label for="fname">Name:     </label> <br>
+          <input id="Update_Name" type="text" id="fname" name="fname"><br>
+          <label for="fname2">Emissions:</label> <br>
+          <input id="Update_Emissions" type="text" id="fname2" name="fname2"><br>
+          <label for="fname3">Balance Change:  </label><br>
+          <input id="Update_Balance" type="text" id="fname3" name="fname3"><br>
+          <p></p>
+          <button id="Update_Submit" type="button" class="btn btn-secondary" onclick="App.updateParticipant()">Submit</button>
+          <p></p>
+        </div >
+        <p> </p>
+
+        <div class="FormClass" id="View" >
+          <h5> <b> View participants:</b> </h5>
+          <input id="View_Address" type="text" id="fname2" name="fname2"><br>
+          <label for="fname3">Balance:  </label><br>
+          <p></p>
+          <button id="View_Submit" type="button" class="btn btn-secondary" onclick="App.viewParticipant()">Submit</button>
+          <p></p>
+        </div >
+
+
+        <div class="View_Participant" >
+          <label>
+            <p></p>
+            <p><strong>Name:</strong></p>
+            <span id="View_Participant_Name">...</span>
+            <p></p>
+            <p><strong>Balance:</strong></p>
+            <span id="View_Participant_Balance">...</span>
+            <p></p>
+            <p><strong>Emmisions:</strong></p>
+            <span id="View_Participant_Emmisions">...</span>
+            <p></p>
+            <p><strong>Carbon Credits:</strong></p>
+            <span id="View_Participant_CarbonCredit">....</span>
+          </label>
+        </div>
+
+        <p> </p>
+
+        <div class="FormClass" id="Issue_Credits" >
+          <h5> <b> Issue Credits:</b> </h5>
+          <label for="fname">Address:  </label> <br>
+          <input id="Issue_Credits_Address" type="text" id="fname" name="fname"><br>
+          <p></p>
+          <button id="Issue_Credits_Submit" type="button" class="btn btn-secondary" onclick="App.issueCredits()">Submit</button>
+          <p></p>
+        </div >
+        <p> </p>
+
+        <div class="FormClass" id="Match_Order" >
+          <h5> <b> Match Orders:</b> </h5>
+          <p></p>
+          <button id="Match_Order_Submit" type="button" class="btn btn-secondary" onclick="App.matchOrder()">matchOrders</button>
+          <p></p>
+        </div >
+
+
+
+    </div>
+
+    <div id="Trading" class="container-fluid">
+      <h2 class ="sh2">Participant Functions</h2>
+        <div class="FormClass" id="Buy" >
+
+            <h5> <b> Make Buy Order:</b> </h5>
+            <label for="fname">Buyer Address:     </label> <br>
+            <input id="Buy_Address" type="text" id="fname" name="fname"><br>
+            <label for="fname2">Volume:</label> <br>
+            <input id="Buy_Volume" type="text" id="fname2" name="fname2"><br>
+            <p></p>
+            <button id="Buy_Submit" type="button" class="btn btn-secondary" onclick="App.buy()">Submit</button>
+            <p></p>
+        </div >
+
+        <div class="FormClass" id="Sell" >
+
+          <h5> <b> Make Sell Order:</b> </h5>
+          <label for="fname">Seller Address:     </label> <br>
+          <input id="Sell_Address" type="text" id="fname" name="fname"><br>
+          <label for="fname2">Volume:</label> <br>
+          <input id="Sell_Volume" type="text" id="fname2" name="fname2"><br>
+          <label for="fname2">Sell Price:</label> <br>
+          <input id="Sell_Price" type="text" id="fname2" name="fname2"><br>
+          <p></p>
+          <button id="Sell_Submit" type="button" class="btn btn-secondary" onclick="App.sell()">Submit</button>
+          <p></p>
+        </div >
+
+        <div class="FormClass" id="View" >
+          <h5> <b> View Buy Orders:</b> </h5>
+          <button id="View_Buy_Orders_Submit" type="button" class="btn btn-secondary" onclick="App.viewBuyOrders()">Submit</button>
+          <p></p>
+        </div >
+        <div class="View_Buy_Orders" >
+          <label>
+            <p></p>
+            <p><strong>Buy Order #1</strong></p>
+            <p></p>
+            <p><strong>Address:</strong></p>
+            <span id="View_Buy_Orders_Address0">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Buy_Orders_Volume0">...</span>
+          </label>
+          <p></p>
+          <label>
+            <p></p>
+            <p><strong>Buy Order #2</strong></p>
+            <p></p>
+            <p><strong>Address:</strong></p>
+            <span id="View_Buy_Orders_Address1">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Buy_Orders_Volume1">...</span>
+          </label>
+          <p></p>
+          <label>
+            <p></p>
+            <p><strong>Buy Order #3</strong></p>
+            <p></p>
+            <p><strong>Address:</strong></p>
+            <span id="View_Buy_Orders_Address2">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Buy_Orders_Volume2">...</span>
+          </label>
+          <p></p>
+          <label>
+            <p></p>
+            <p><strong>Buy Order #4</strong></p>
+            <p></p>
+            <p><strong>Address:</strong></p>
+            <span id="View_Buy_Orders_Address3">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Buy_Orders_Volume3">...</span>
+          </label>
+        </div>
+
+
+        <div class="FormClass" id="View_Sell" >
+          <h5> <b> View Sell Orders:</b> </h5>
+          <button id="View_Sell_Orders_Submit" type="button" class="btn btn-secondary" onclick="App.viewSellOrders()">Submit</button>
+          <p></p>
+        </div >
+        <div class="View_Sell_Orders" >
+          <label>
+            <p></p>
+            <p><strong>Sell Order #1</strong></p>
+            <p></p>
+            <p><strong>Address:</strong></p>
+            <span id="View_Sell_Orders_Address0">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Sell_Orders_Volume0">...</span>
+            <p></p>
+            <p><strong>Sell Price:</strong></p>
+            <span id="View_Sell_Orders_Price0">...</span>
+          </label>
+          <p></p>
+          <label>
+            <p></p>
+            <p><strong>Sell Order #2</strong></p>
+            <p></p>
+            <p><strong>Address:</strong></p>
+            <span id="View_Sell_Orders_Address1">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Sell_Orders_Volume1">...</span>
+            <p></p>
+            <p><strong>Sell Price:</strong></p>
+            <span id="View_Sell_Orders_Price1">...</span>
+          </label>
+          <p></p>
+          <label>
+            <p></p>
+            <p><strong>Sell Order #3</strong></p>
+            <p></p>
+            <p><strong>Address:</strong></p>
+            <span id="View_Sell_Orders_Address2">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Sell_Orders_Volume2">...</span>
+            <p></p>
+            <p><strong>Sell Price:</strong></p>
+            <span id="View_Sell_Orders_Price2">...</span>
+          </label>
+          <p></p>
+          <label>
+            <p></p>
+            <p><strong>Sell Order #4</strong></p>
+            <p></p>
+            <p><strong>Address:</strong></p>
+            <span id="View_Sell_Orders_Address3">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Sell_Orders_Volume3">...</span>
+            <p></p>
+            <p><strong>Volume:</strong></p>
+            <span id="View_Sell_Orders_Price3">...</span>
+          </label>
+        </div>
+
+    </div >
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
